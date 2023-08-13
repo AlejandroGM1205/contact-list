@@ -9,13 +9,13 @@ let listaContactos = [
 
 //Crea una función para añadir un nuevo contacto a una lista
 
-function agregarContacto(nombreCompleto) {
+function crearContacto(nombreCompleto) {
     listaContactos.push(nombreCompleto);
 }
 
 //Crear una funcion para borrar un contacto existente de la lista
 
-function borrarContacto(nombreCompleto) {
+function eliminarContacto(nombreCompleto) {
     let indice = listaContactos.indexOf(nombreCompleto);
     if (indice != -1) {
         listaContactos.splice(indice, 1);
