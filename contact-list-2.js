@@ -17,6 +17,34 @@ function eliminarContacto(id) {
     }
 }
 
+
+//Crear una funcion para actualizar contacto ya existente
+function actualizarContacto(id, camposActualizados) {
+    const indice = listaContactos.findIndex(contacto => contacto.id === id);
+    if (indice !== -1) {
+        const contactoActualizado = { ...listaContactos[indice], ...camposActualizados };
+        listaContactos[indice] = contactoActualizado;
+        console.log("Contacto con ID " + id + " actualizado.");
+    } else {
+        console.log("No se encontró un contacto con ID " + id);
+    }
+}
+
+//Creo una funcion de imprimir la lista de contactos para verificar la actualizacion
+function imprimirListaContactos() {
+    console.log("Lista de Contactos:");
+    listaContactos.forEach(contacto => {
+        console.log("ID:", contacto.id);
+        console.log("Nombres:", contacto.nombres);
+        console.log("Apellidos:", contacto.apellidos);
+        console.log("Teléfono:", contacto.teléfono);
+        console.log("Ubicación:");
+        console.log("   Ciudad:", contacto.ubicacion.ciudad);
+        console.log("   Dirección:", contacto.ubicacion.dirección);
+        console.log("-------------------------------------");
+    });
+}
+
 //Ejemplo contactos
 const nuevoContacto = {
     id: 1,
@@ -39,3 +67,18 @@ const nuevoContacto1 = {
         dirección: "123 Calle Secundaria"
     }
 };
+
+crearContacto(nuevoContacto);
+crearContacto(nuevoContacto1);
+imprimirListaContactos();
+
+actualizarContacto(1, {
+    nombres: "Nuevo Nombre",
+    teléfono: "987654321",
+    ubicacion: {
+        ciudad: "Nueva Ciudad",
+        dirección: "Nueva Dirección"
+    }
+})
+
+imprimirListaContactos();
